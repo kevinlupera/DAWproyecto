@@ -14,7 +14,7 @@ and open the template in the editor.
     <body class="inicio">
         <?php include("codigos/header.php")?>
         <?php include("codigos/nav.php")?>
-
+<h1>"Version 1.0"</h1>
         <section id='contenedor'>
             <section class="uno">
                 <div class="principal">
