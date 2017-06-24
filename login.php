@@ -11,7 +11,7 @@ and open the template in the editor.
     </head>
     <body>
         <?php include("codigos/header.php")?>
-        <?php include("codigos/nav.php")?>
+        
 
         <div class="contenedor">                    
             <form method="post" action="loginController.php?op=1&ca=r">
