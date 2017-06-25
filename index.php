@@ -8,9 +8,7 @@ and open the template in the editor.
 <html lang="es">
     <head>
         <title>ALLBUY</title>
-
         <?php include("codigos/meta.php")?>
-
     </head>
     <body class="inicio">
         <?php include("codigos/header.php")?>
@@ -32,7 +30,10 @@ and open the template in the editor.
         </section>
         <aside id='barraLateral'>
             <h3>Registrate</h3>
-            <form method="post" action="" onsubmit="return validacionFormularioRegistro()">
+            <form method="post" action="Controladores/registroControl.php" onsubmit="return validacionFormularioRegistro()">
+                <label for="idUsuario">Usuario:</label><br/>
+                <input type="text" name="idUsuario" id="campoIdUsuario" onkeypress="validaSoloLetras()"
+                       placeholder="Usuario" required/><br/>
                 <label for="nombreUsuario">Nombre:</label><br/>
                 <input type="text" name="nombreUsuario" id="campoNombreUsuario" onkeypress="validaSoloLetras()"
                        placeholder="Nombre" required/><br/>

@@ -1,35 +1,37 @@
 <?php
-include("modelo/Usuario.php");
+
+/* 
+INSERT INTO `tienda`.`persona` (`persona_id`, `nombre`, `apellido`, `cedula`, `fecha_nacimiento`, `genero`, `email`) 
+  VALUES ('2', 'Kevin Alexander', 'Lupera Bravo', '0951726777', '1997-02-26', 'masculino', 'kevin.luperab@ug.edu.ec');
+
+  INSERT INTO `tienda`.`usuario` (`usuario_id`, `usuario`, `clave`, `persona_id`) VALUES ('3', 'KevinL777', 'abcde', '2');
+
+ *  */
+
+if (isset($_POST['botonRegistrar'])) {
     //Leer parametros
     $usuario=  filter_input(INPUT_POST, "cedulaBuscada");
-    if(!empty($usuario)){
+if(!empty($usuario)){
         //validar con Base de datos
         $usuarioObjeto=buscarUsuario($usuario);
         if(isset($usuarioObjeto)&&!empty($usuarioObjeto)){
             //TRABAJO CON SESIONES
-            echo "
-                <div class=usuario id=usuario1>
-                    <a href=# class=fotoUsuario><img src=imagenes/user-image.png alt=User style=height:100px;></a>
-                                            <div class=infoUsuario>
-                                                <span id=nombreUsuario1>".$usuarioObjeto->getPer_nombres()."</span><br/>
-                                                <span id=nombreUsuario1>".$usuarioObjeto->getUsu_usuario() ."</span>
-                                            </div>
-                                            <div class=opciones>
-                                                <a href=# onclick=><i class=fa fa-users aria-hidden=true></i>&nbsp;Perfil</a>
-                                                <a href=# onclick=><i class=fa fa-print aria-hidden=true></i>&nbsp;Compras</a>
-                                                <a href=# onclick=><i class=fa fa-times aria-hidden=true></i>&nbsp;Bloquear</a>
-                                                <a href=# onclick=><i class=fa fa-cart-plus aria-hidden=true></i>&nbsp;Cesta</a>
-                                            </div>
-                                        </div>";
+            $_SESSION['usuarioBuscado']=$usuarioObjeto;
+            header("Location:datosUsuario.php");
+            exit;
         }else{
-            
+            echo '<h2>Usuario no encontrado</h2>'; 
+            $_SESSION["usuarioBuscado"] = "";
+        header("Location:datosUsuario.php");
             exit;
         }
     }else {
-        header("Location:login.php");
+        //echo '<h2>Usuario no encontrado</h2>';  
+        $_SESSION["usuarioBuscado"] = "";
+        header("Location:datosUsuario.php");
         exit;
     }
-
+} 
 function buscarUsuario($user) {
     //Permite incluir un archivo dentro de otro
     include("modelo/conexion.php");
@@ -51,7 +53,6 @@ function buscarUsuario($user) {
         mysqli_close($link);
         return;
     }
-    
     //creacion de un objeto
     $usuario = new Usuario($fila['usuario_id'], 
             $fila['usuario'], 
@@ -69,4 +70,3 @@ function buscarUsuario($user) {
 
     return $usuario;
 }
-

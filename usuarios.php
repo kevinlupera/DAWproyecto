@@ -8,13 +8,19 @@
     <body>
         <?php include("codigos/header.php")?>
         <?php include("codigos/nav.php")?>
-        <form method="post" action="usuarios.php">
-            <input id="mysearch" name="cedulaBuscada" type="search" placeholder="Cédula o RUC.." maxlength="10" 
-                   onkeypress="validaSoloNumeros()" minlength="10" required/>
-            <input type="submit" value="Buscar" name="botonBuscar" style="width: 10%;">
-        </form>
-                <?php
-                    //include("modelo/Usuario.php");
+        <div class=contenedor>
+            <div class=contenedorUsuario>
+                <h1>Buscar Usuario</h1>
+                <form method="post" action="usuarios.php">
+                    <input style="align:center;" id="mysearch" name="cedulaBuscada" type="search" placeholder="Cédula o RUC.." maxlength="10" 
+                           onkeypress="validaSoloNumeros()" minlength="10" required/>
+                    <input type="submit" value="Buscar" name="botonBuscar" style="width: 10%;">
+                </form>
+            </div>
+        </div>
+        <?php
+                //Se ha pulsado el botón aceptar
+                if (isset($_POST['botonBuscar'])) {
                     //Leer parametros
                     $usuario=  filter_input(INPUT_POST, "cedulaBuscada");
                     if(!empty($usuario)){
@@ -22,33 +28,22 @@
                         $usuarioObjeto=buscarUsuario($usuario);
                         if(isset($usuarioObjeto)&&!empty($usuarioObjeto)){
                             //TRABAJO CON SESIONES
-                            echo "
-                            <div class=contenedor>
-                                <div class=contenedorUsuario>
-                                    <div class=usuario id=usuario1>
-                                        <a href=# class=fotoUsuario><img src=imagenes/user-image.png alt=User style=height:100px;></a>
-                                        <div class=infoUsuario>
-                                            <span id=nombreUsuario1>".$usuarioObjeto->getPer_nombres()."</span><br/>
-                                            <span id=nombreUsuario1>".$usuarioObjeto->getUsu_usuario() ."</span>
-                                        </div>
-                                        <div class=opciones>
-                                            <a href=# onclick=><i class=fa fa-users aria-hidden=true></i>&nbsp;Perfil</a>
-                                            <a href=# onclick=><i class=fa fa-print aria-hidden=true></i>&nbsp;Compras</a>
-                                            <a href=# onclick=><i class=fa fa-times aria-hidden=true></i>&nbsp;Bloquear</a>
-                                            <a href=# onclick=><i class=fa fa-cart-plus aria-hidden=true></i>&nbsp;Cesta</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>";
+                            $_SESSION['usuarioBuscado']=$usuarioObjeto;
+                            header("Location:datosUsuario.php");
+                            exit;
                         }else{
-                            echo 'Usuario no encontrado';
+                            echo '<h2>Usuario no encontrado</h2>'; 
+                            $_SESSION["usuarioBuscado"] = "";
+                        header("Location:datosUsuario.php");
                             exit;
                         }
                     }else {
-                        echo '<h2>Usuario no encontrado</h2>';
+                        //echo '<h2>Usuario no encontrado</h2>';  
+                        $_SESSION["usuarioBuscado"] = "";
+                        header("Location:datosUsuario.php");
                         exit;
                     }
-
+                } 
                 function buscarUsuario($user) {
                     //Permite incluir un archivo dentro de otro
                     include("modelo/conexion.php");
@@ -70,7 +65,6 @@
                         mysqli_close($link);
                         return;
                     }
-
                     //creacion de un objeto
                     $usuario = new Usuario($fila['usuario_id'], 
                             $fila['usuario'], 
@@ -89,8 +83,6 @@
                     return $usuario;
                 }
             ?>
-            </div>
-        </div>
         <?php include("codigos/javas.php")?>
         <?php include("codigos/footer.php")?>
     </body>
