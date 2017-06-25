@@ -8,46 +8,10 @@ and open the template in the editor.
     <head>
         <?php include("codigos/meta.php")?>
         <title>ALLBUY-USUARIOS</title>
-        <style>
-            .contenedorUsuario{
-                display: block;
-                width: 90%;
-                padding: 20px;
-                margin-top: 10px;
-                margin: auto;
-                
-            }
-            .usuario{
-                margin-top: 20px;
-                border-bottom: 2px solid gray;
-            }
-            .fotoUsuario,.infoUsuario,.opciones{
-                display: inline-block;
-                vertical-align: top;
-            }
-            .infoUsuario{
-                
-                width: 25%;
-                
-            }
-            .infoUsuario span{
-                margin-left: 20px;
-                font-weight: bold;
-                padding: 10px;
-                
-            }
-            .opciones{
-                width: 40%;
-            }
-            .opciones a{
-                color: white;
-                text-decoration: none;
-                padding: 7px;
-                background: #24292e;
-                font-weight: bold;
-                border-radius: 3px;
-            }
-        </style>
+        <!--<style>
+            
+        </style>-->
+        <link rel="stylesheet" href="estilos/estilos3.css"/> 
     </head>
     <body>
         <?php include("codigos/header.php")?>

@@ -30,10 +30,7 @@ and open the template in the editor.
 
                     if($usuario==null || !isset($usuario) || empty($usuario)){
                     header("Location:login.php");
-                    }
-
-                   /* echo "<h4> Bienvenido: ". $usuario->getPer_nombres(). " ".$usuario->getPer_apellidos(). "</h4>";  */
-                ?>
+                    }?>
                 <strong style=" float: right; color: white; margin-right: 10px;"><?php echo "Bienvenido: ".$usuario->getPer_nombres(); ?></strong>
             </div>
         </nav>
