@@ -46,3 +46,12 @@ and open the template in the editor.
                 font-weight: bold;
                 border-radius: 3px;
             }
+            input[type=search] {
+                width: 120px;
+                -webkit-transition: width 0.4s ease-in-out;
+                transition: width 0.4s ease-in-out;
+            }
+
+            input[type=search]:focus {
+                width: 10%;
+            }

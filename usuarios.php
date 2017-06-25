@@ -8,15 +8,18 @@ and open the template in the editor.
     <head>
         <?php include("codigos/meta.php")?>
         <title>ALLBUY-USUARIOS</title>
-        <!--<style>
-            
-        </style>-->
         <link rel="stylesheet" href="estilos/estilos3.css"/> 
     </head>
     <body>
         <?php include("codigos/header.php")?>
         <?php include("codigos/nav.php")?>
+        <form method="post" action="" onsubmit="">
+            <input id="mysearch" name="searchitem" type="search" placeholder="Cédula o RUC.." maxlength="10" 
+                   onkeypress="validaSoloNumeros()" required/>
+            <input type="submit" value="Buscar" name="botonBuscar" style="width: 10%;">
+        </form>
         <div class="contenedor">
+            
             <div class="contenedorUsuario">
             <div class="usuario" id="usuario1">
                 <a href="#" class="fotoUsuario"><img src="imagenes/user-image.png" alt="User" style="height:100px;"></a>
@@ -85,6 +88,7 @@ and open the template in the editor.
             </div>
             </div>
         </div>
+        <?php include("codigos/javas.php")?>
         <?php include("codigos/footer.php")?>
     </body>
 </html>

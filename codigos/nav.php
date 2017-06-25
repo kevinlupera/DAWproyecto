@@ -25,12 +25,11 @@ and open the template in the editor.
                 <?php
                     include("modelo/Usuario.php");
                     session_start();
-
                     $usuario=$_SESSION['usuario'];
-
                     if($usuario==null || !isset($usuario) || empty($usuario)){
                     header("Location:login.php");
                     }?>
-                <strong style=" float: right; color: white; margin-right: 10px;"><?php echo "Bienvenido: ".$usuario->getPer_nombres(); ?></strong>
+                <strong style=" float: right; color: white; margin-right: 10px;">
+                    <?php echo "Bienvenido: ".$usuario->getPer_nombres();?></strong>
             </div>
         </nav>
