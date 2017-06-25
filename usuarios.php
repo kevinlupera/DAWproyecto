@@ -20,6 +20,7 @@ and open the template in the editor.
         </form>
         <div class="contenedor">
             
+            
             <div class="contenedorUsuario">
             <div class="usuario" id="usuario1">
                 <a href="#" class="fotoUsuario"><img src="imagenes/user-image.png" alt="User" style="height:100px;"></a>
