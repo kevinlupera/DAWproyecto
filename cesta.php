@@ -16,6 +16,7 @@ and open the template in the editor.
     <body>
         <?php include("codigos/javas.php")?>
         <?php include("codigos/header.php")?>
+
         <?php include("codigos/nav.php")?> 
         <?php include("modelo/getOrdenes.php");
               include("modelo/getProductos.php");
@@ -25,6 +26,9 @@ and open the template in the editor.
             
             
         ?>
+
+        <?php include("codigos/nav.php")?>  
+
         <div class="contenedor">
             <section id="contenedorCesta">
                 <div id="infoProducto">
