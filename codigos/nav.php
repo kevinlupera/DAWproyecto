@@ -28,6 +28,11 @@ and open the template in the editor.
                     $usuario=$_SESSION['usuario'];
                     if($usuario==null || !isset($usuario) || empty($usuario)){
                     header("Location:login.php");
+                    }
+                    else{
+                        echo " <script>
+                            document.getElementById('login').innerHTML = 'SALIR';
+                        </script>";
                     }?>
                 <strong style=" float: right; color: white; margin-right: 10px;">
                     <?php echo "Bienvenido: ".$usuario->getPer_nombres();?></strong>
