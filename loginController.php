@@ -1,5 +1,5 @@
 <?php
-include("modelo/Usuario.php");
+include("modelo/Usuario2.php");
 //leer parametros
 $option=filter_input(INPUT_GET,"op");
 $ca=filter_input(INPUT_GET,"ca");
@@ -78,7 +78,6 @@ function validarUsuario($user, $pass) {
     mysqli_free_result($resultado);
     // Cerrar la conexión
     mysqli_close($link);
-
     return $usuario;
 }
     

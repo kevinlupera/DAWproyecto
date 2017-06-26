@@ -3,16 +3,16 @@ class Usuario {
     //put your code here
     private $usu_id;
     private $usu_usuario;
+    private $usu_clave;
     private $per_nombres;
     private $per_apellidos;
     private $per_cedula;
     private $per_fecha_nac;
     private $per_email;
     private $per_genero;
-    
-    function __construct($usu_id, $usu_usuario, $per_nombres, $per_apellidos, $per_cedula, $per_fecha_nac, $per_email, $per_genero) {
-        $this->usu_id = $usu_id;
+    function __construct($usu_usuario, $usu_clave, $per_nombres, $per_apellidos, $per_cedula, $per_fecha_nac, $per_email, $per_genero) {
         $this->usu_usuario = $usu_usuario;
+        $this->usu_clave = $usu_clave;
         $this->per_nombres = $per_nombres;
         $this->per_apellidos = $per_apellidos;
         $this->per_cedula = $per_cedula;
@@ -26,6 +26,10 @@ class Usuario {
 
     function getUsu_usuario() {
         return $this->usu_usuario;
+    }
+
+    function getUsu_clave() {
+        return $this->usu_clave;
     }
 
     function getPer_nombres() {
@@ -60,6 +64,10 @@ class Usuario {
         $this->usu_usuario = $usu_usuario;
     }
 
+    function setUsu_clave($usu_clave) {
+        $this->usu_clave = $usu_clave;
+    }
+
     function setPer_nombres($per_nombres) {
         $this->per_nombres = $per_nombres;
     }
@@ -83,6 +91,8 @@ class Usuario {
     function setPer_genero($per_genero) {
         $this->per_genero = $per_genero;
     }
+
+
 
 
 }
