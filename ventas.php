@@ -15,12 +15,50 @@ and open the template in the editor.
         <!-- Product grid -->
         <div class="contenedorProductos">
                 <table border="2">
-                    <tr>
+                    
+                      <?php include("modelo/getProductos.php");
+                        
+                        $arreglo_productos= obtener_productos();
+                        for ($x=1;$x<=count($arreglo_productos); $x++){
+                            if($x==1){
+                                echo "<tr>";
+                            }
+                            echo "<td>"; 
+                                echo "<div class='sensors' align='center'>";
+                                    echo "<img src='imagenes/".$arreglo_productos[$x-1]->getPro_img()."' alt='".$arreglo_productos[$x-1]->getPro_nombre()."' style='width:200px;height:200px; align-content: center;'>";
+                                    echo "<h4>".$arreglo_productos[$x-1]->getPro_nombre()."</h4>";
+                                    echo "<p>".$arreglo_productos[$x-1]->getPro_descripcion()."<br><b>".$arreglo_productos[$x-1]->getPro_precio()."</b></p>";
+                                echo "</div>";
+                                echo "<div id='contenedor_anadir_cesta'>";
+                                    echo "<form method='post' action='modelo/insertOrden.php' id='form_anadir_cesta'>";
+                                        echo "<input type='hidden' name='idproducto' value='".$arreglo_productos[$x-1]->getProducto_id()."'>";
+                                        echo "<input type='hidden' name='idusuario' value='".$usuario->getUsu_id()."'>";
+                                        echo "<input type='hidden' name='precio' value='".$arreglo_productos[$x-1]->getPro_precio()."'>";
+                                        echo "<label for='cantidad'>cantidad</label>";
+                                        echo "<input type='number' id='b' name='cantidad' value='1' min='1' max='10'>";
+                                        echo "<input type='submit' value='añadir a cesta' id='bt_submit'>";
+                                    echo "</form>";
+                                echo "</div>";
+                            echo "</td>";
+                            if(($x % 3 )==0 ){
+                                echo "</tr>";
+                                echo "<tr>";
+                            }
+                        }
+                      ?>
+                      <!--
                       <td>
                           <div class="sensors" align="center">
                             <img src="imagenes/sensordistancia.jpg" alt="ZX sensor de distancia y gesto" style="width:200px;height:200px; align-content: center;">
                             <h4>ZX sensor de distancia y gesto</h4>
                             <p>Reconocer la distancia de un objeto lejos del sensor hasta aproximadamente 12 pulgadas.<br><b>$24.95</b></p>
+                          </div>
+                          <div id="contenedor_anadir_cesta">
+                              <form action="#" id="form_anadir_cesta" >
+                                  <label for="b">cantidad</label>
+                                  <input type="number" id="b" name="b" value="1" min="1" max="10"> 
+                                  <input type="submit" value="añadir a cesta" id="bt_submit">
+                            </form>
                           </div>
                       </td>
                       <td>
@@ -32,7 +70,7 @@ and open the template in the editor.
                       </td>
                       <td>
                           <div class="sensors" align="center">
-                            <img src="imagenes/sensor2.jpg" style="width:200px;height:200px; align-content: center;">
+                            <img src="imagenes/shs.jpg" style="width:200px;height:200px; align-content: center;">
                             <h4>Sensor de Humedad de Suelo </h4>
                             <p>Sensor de Humedad de Suelo es fácil de usar, mide la humedad en el suelo y materiales 
                                 similares.<br><b>$4.95</b></p>
@@ -57,7 +95,7 @@ and open the template in the editor.
                       </td>
                       <td>
                           <div class="sensors" align="center">
-                            <img src="imagenes/sensor5.jpg" style="width:200px;height:200px; align-content: center;">
+                            <img src="imagenes/spulso.jpg" style="width:200px;height:200px; align-content: center;">
                             <h4>Sensor de Pulso</h4>
                             <p>El Sensor de Pulso Amped es un sensor de frecuencia cardíaca plug-and-play para Arduino.<br><b>$4.95</b></p>
                           </div>
@@ -159,7 +197,7 @@ and open the template in the editor.
                           </div>
                       </td>
                     </tr>
-
+                    -->
                 </table>
             </div>
         <?php include("codigos/footer.php")?>
