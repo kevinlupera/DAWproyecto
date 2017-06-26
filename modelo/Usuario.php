@@ -1,5 +1,5 @@
 <?php
-class Usuario {
+class Usuario{
     //put your code here
     private $usu_id;
     private $usu_usuario;
@@ -24,7 +24,7 @@ class Usuario {
         return $this->usu_id;
     }
 
-    function getUsu_usuario() {
+    public function getUsu_usuario() {
         return $this->usu_usuario;
     }
 

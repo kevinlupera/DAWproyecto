@@ -13,7 +13,7 @@ and open the template in the editor.
         <?php include("codigos/javas.php")?>
         <?php include("codigos/header.php")?>
         <?php include("codigos/nav.php")?>
-        <div class="contenedorReporte">
+        <div id="reporte-cont" class="contenedorReporte">
             <section class="reporte-dia">
                 <h2>Reporte del Día</h2>
                 <button type="button" onclick="adicionarRepor(1)">Agregar un reporte</button>
@@ -48,7 +48,32 @@ and open the template in the editor.
                 </div>                     
             </section>
         </div>
-        
+        <?php
+            $usuarioObjeto=$_SESSION['usuario'];//ALMACENADO 
+            $admin=1;
+            if($usuarioObjeto->getUsu_usuario()==$admin){
+                echo " 
+                    <script type='text/javascript'>
+                    var nodoDiv = document.getElementById('reporte-cont'); 
+                    nodoDiv.style.visibility= 'visible';
+                    </script>
+                ";
+            }
+            else {
+                echo " 
+                    <script type='text/javascript'>
+                    var nodoDiv = document.getElementById('reporte-cont'); 
+                    nodoDiv.style.visibility= 'hidden';
+                    </script>
+                ";
+                echo"<h1 align='center'>USUARIO SIN PRIVILEGIO</h1>";
+                echo "
+                    <script type='text/javascript'>
+                    alert('USUARIO SIN PRIVILEGIO');
+                        </script>
+                ";
+            }
+        ?>
         <?php include("codigos/footer.php")?>
     </body>
 </html>

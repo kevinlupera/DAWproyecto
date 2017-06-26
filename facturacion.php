@@ -49,7 +49,7 @@ and open the template in the editor.
         </div>
         <?php
             $usuarioObjeto=$_SESSION['usuario'];//ALMACENADO 
-            $admin="admin";
+            $admin=1;
             if($usuarioObjeto->getUsu_usuario()==$admin){
                 echo " 
                     <script type='text/javascript'>
@@ -62,7 +62,6 @@ and open the template in the editor.
                 echo " 
                     <script type='text/javascript'>
                     var nodoDiv = document.getElementById('facturacion-cont'); 
-                    
                     nodoDiv.style.visibility= 'hidden';
                     </script>
                 ";
