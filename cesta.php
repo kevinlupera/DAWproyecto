@@ -21,13 +21,9 @@ and open the template in the editor.
         <?php include("modelo/getOrdenes.php");
               include("modelo/getProductos.php");
             $usuario=$_SESSION['usuario'];
-            $usuario_id=$usuario->getUsu_id();
+            $usuario_id=$usuario->getUsu_usuario();
             $arreglo_ordenes= obtener_ordenes($usuario_id);
-            
-            
         ?>
-
-        
 
         <div class="contenedor">
             <section id="contenedorCesta">

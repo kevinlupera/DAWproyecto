@@ -10,8 +10,7 @@ function obtener_producto($producto_id){
         printf("Conexión fallida: %s\n", mysqli_connect_error());
         exit();
     }
-    
-    $consulta="SELECT * FROM producto WHERE producto_id=".$producto_id;
+    $consulta="SELECT * FROM tienda.producto WHERE producto_id=".$producto_id;
     
     $resultado = mysqli_query($enlace, $consulta);
 
@@ -53,8 +52,7 @@ function obtener_productos(){
         printf("Conexión fallida: %s\n", mysqli_connect_error());
         exit();
     }
-    
-    $consulta="SELECT * FROM producto";
+    $consulta="SELECT * FROM tienda.producto";
     
     $resultado = mysqli_query($enlace, $consulta);
     if (!$resultado) {
@@ -68,14 +66,8 @@ function obtener_productos(){
                              $fila['pro_precio'],
                              $fila['pro_img']));
         }
-
-    
-    
-    
     mysqli_free_result($resultado);
-    
     /* cerrar la conexión */
     mysqli_close($enlace);
-
   return $arreglo; 
 }

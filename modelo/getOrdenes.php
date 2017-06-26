@@ -9,11 +9,9 @@ function obtener_ordenes($usuario_id){
         printf("Conexión fallida: %s\n", mysqli_connect_error());
         exit();
     }
-    
-    $consulta="SELECT * FROM ordenes WHERE usuario_id=".$usuario_id;
-    
+    $consulta="SELECT * FROM tienda.ordenes WHERE usuario_id='$usuario_id'";
+     
     if ($resultado = mysqli_query($enlace, $consulta)) {
-
     /* obtener array asociativo */
         $arreglo= new ArrayObject();
         while ($fila = mysqli_fetch_assoc($resultado)) {
@@ -27,10 +25,8 @@ function obtener_ordenes($usuario_id){
         }
 
     }
-
     /* liberar el conjunto de resultados */
     mysqli_free_result($resultado);
-    
     /* cerrar la conexión */
     mysqli_close($enlace);
   return $arreglo; 
