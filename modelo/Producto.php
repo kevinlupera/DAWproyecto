@@ -19,12 +19,15 @@ class Producto {
     private $pro_precio;
     private $pro_img;
             
-    function __construct($producto_id, $pro_nombre, $pro_descripcion, $pro_precio) {
+    function __construct($producto_id, $pro_nombre, $pro_descripcion, $pro_precio, $pro_img) {
         $this->producto_id = $producto_id;
         $this->pro_nombre = $pro_nombre;
         $this->pro_descripcion = $pro_descripcion;
         $this->pro_precio = $pro_precio;
+        $this->pro_img=$pro_img;
     }
+    
+    
     function getProducto_id() {
         return $this->producto_id;
     }
