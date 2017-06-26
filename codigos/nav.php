@@ -23,7 +23,7 @@ and open the template in the editor.
                 <a id="reportes" href="reportes.php" class="item"><i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp;Reportes</a>
                 <a id="usuarios" href="usuarios.php" class="item"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Usuarios</a>
                 <?php
-                    include("modelo/Usuario2.php");
+                    include("modelo/Usuario.php");
                     session_start();
                     $usuario=$_SESSION['usuario'];
                     if($usuario==null || !isset($usuario) || empty($usuario)){
