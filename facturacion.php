@@ -12,7 +12,7 @@ and open the template in the editor.
     <body>
         <?php include("codigos/header.php")?>
         <?php include("codigos/nav.php")?>
-        <div class="contenedor-fact">
+        <div id="facturacion" class="contenedor-fact">
             <section id='contenedor'>
             <section class="uno">
                 <div class="principal">
@@ -47,6 +47,25 @@ and open the template in the editor.
                 </form>
             </aside>
         </div>
+        <?php
+            $usuarioObjeto=$_SESSION['usuario'];//ALMACENADO 
+            if(strcmp($usuarioObjeto->getUsu_usuario(),"admin")==0){
+                echo "
+                    <script type='text/javascript\'>
+                    var nodoDiv = document.getElementById('facturacion'); 
+                    nodoDiv.style.visibility=hidden;
+                    if ( nodoDiv.hasChildNodes())
+                    {
+                        while (nodoDiv.childNodes.length >= 1 )
+                        {
+                        nodoDiv.removeChild( cell.firstChild );
+                        }
+                    }
+                    </script>
+                ";
+            }
+            else {echo"<h1>USUARIO SIN PRIVILEGIO</h1>";}
+        ?>
         <?php include("codigos/javas.php")?>
         <?php include("codigos/footer.php")?>
     </body>

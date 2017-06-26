@@ -1,5 +1,5 @@
 <?php
-include("modelo/Usuario2.php");
+include("modelo/Usuario.php");
 //leer parametros
 $option=filter_input(INPUT_GET,"op");
 $ca=filter_input(INPUT_GET,"ca");
