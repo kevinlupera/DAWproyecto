@@ -2,10 +2,8 @@
 
 include("modelo/Producto.php");
 
-
-
 function obtener_producto($producto_id){
-    $enlace = mysqli_connect("localhost", "root", "", "tienda");
+    $enlace = mysqli_connect("localhost", "root", "mysql", "tienda");
     
     /* verificar la conexión */
     if (mysqli_connect_errno()) {
@@ -48,7 +46,7 @@ function obtener_producto($producto_id){
 }
 
 function obtener_productos(){
-    $enlace = mysqli_connect("localhost", "root", "", "tienda");
+    $enlace = mysqli_connect("localhost", "root", "mysql", "tienda");
     
     /* verificar la conexión */
     if (mysqli_connect_errno()) {

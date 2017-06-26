@@ -7,7 +7,7 @@ if(!isset($orden_id) || empty($orden_id)){
     exit;
 } else {
     
-    $enlace = mysqli_connect("localhost", "root", "", "tienda");
+    $enlace = mysqli_connect("localhost", "root", "mysql", "tienda");
     
     /* verificar la conexión */
     if (mysqli_connect_errno()) {

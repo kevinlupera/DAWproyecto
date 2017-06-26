@@ -16,7 +16,7 @@ if(!isset($producto_id) || empty($producto_id) || !isset($precio) || empty($prec
 }
 
 
-    $enlace = mysqli_connect("localhost", "root", "", "tienda");
+    $enlace = mysqli_connect("localhost", "root", "mysql", "tienda");
     
     /* verificar la conexión */
     if (mysqli_connect_errno()) {
@@ -31,9 +31,6 @@ if(!isset($producto_id) || empty($producto_id) || !isset($precio) || empty($prec
     if (!$resultado) {
         die("Error: no se pudo realizar la inserccion");
     }   
-    
-   
-    
     /* cerrar la conexión */
     mysqli_close($enlace);
     

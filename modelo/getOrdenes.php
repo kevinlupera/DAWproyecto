@@ -1,11 +1,8 @@
 <?php
 
 include("modelo/Orden.php");
-
-
-
 function obtener_ordenes($usuario_id){
-    $enlace = mysqli_connect("localhost", "root", "", "tienda");
+    $enlace = mysqli_connect("localhost", "root", "mysql", "tienda");
     
     /* verificar la conexión */
     if (mysqli_connect_errno()) {
@@ -36,7 +33,6 @@ function obtener_ordenes($usuario_id){
     
     /* cerrar la conexión */
     mysqli_close($enlace);
-
   return $arreglo; 
 }
 

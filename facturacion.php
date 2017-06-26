@@ -12,7 +12,7 @@ and open the template in the editor.
     <body>
         <?php include("codigos/header.php")?>
         <?php include("codigos/nav.php")?>
-        <div id="facturacion" class="contenedor-fact">
+        <div id="facturacion-cont" class="contenedor-fact">
             <section id='contenedor'>
             <section class="uno">
                 <div class="principal">
@@ -49,22 +49,30 @@ and open the template in the editor.
         </div>
         <?php
             $usuarioObjeto=$_SESSION['usuario'];//ALMACENADO 
-            if(strcmp($usuarioObjeto->getUsu_usuario(),"admin")==0){
-                echo "
-                    <script type='text/javascript\'>
-                    var nodoDiv = document.getElementById('facturacion'); 
-                    nodoDiv.style.visibility=hidden;
-                    if ( nodoDiv.hasChildNodes())
-                    {
-                        while (nodoDiv.childNodes.length >= 1 )
-                        {
-                        nodoDiv.removeChild( cell.firstChild );
-                        }
-                    }
+            $admin="admin";
+            if($usuarioObjeto->getUsu_usuario()==$admin){
+                echo " 
+                    <script type='text/javascript'>
+                    var nodoDiv = document.getElementById('facturacion-cont'); 
+                    nodoDiv.style.visibility= 'visible';
                     </script>
                 ";
             }
-            else {echo"<h1>USUARIO SIN PRIVILEGIO</h1>";}
+            else {
+                echo " 
+                    <script type='text/javascript'>
+                    var nodoDiv = document.getElementById('facturacion-cont'); 
+                    
+                    nodoDiv.style.visibility= 'hidden';
+                    </script>
+                ";
+                echo"<h1 align='center'>USUARIO SIN PRIVILEGIO</h1>";
+                echo "
+                    <script type='text/javascript'>
+                    alert('USUARIO SIN PRIVILEGIO');
+                        </script>
+                ";
+            }
         ?>
         <?php include("codigos/javas.php")?>
         <?php include("codigos/footer.php")?>
